@@ -76,3 +76,16 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: auto; 
 }
+
+/* Banner-swiper */
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.25) !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #4f46e5 !important;
+  width: 26px !important;
+  border-radius: 9999px !important;
+  transition: all 0.3s ease;
+}

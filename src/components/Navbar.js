@@ -3,14 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation"; // Active link এর জন্য এটা লাগবেই
+import { usePathname } from "next/navigation"; 
 import { Sun, Moon, Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [theme, setTheme] = useState("dark");
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const pathname = usePathname(); // কারেন্ট পাথ ট্র্যাক করার জন্য
+  const pathname = usePathname(); 
 
   useEffect(() => {
     const saved = localStorage.getItem("theme") || "dark";
