@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Star, Clock, MapPin, Building, GraduationCap, ChevronRight, X } from "lucide-react";
 
 export default function DoctorCard({ doctor }) {
@@ -14,7 +15,7 @@ export default function DoctorCard({ doctor }) {
   return (
     <div className="dynamic-card rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full group relative">
       
-      {/* 🛑 CUSTOM TOAST */}
+      {/* CUSTOM TOAST */}
       {showToast && (
         <div className="absolute top-4 left-4 right-4 z-50 bg-slate-900 text-white text-xs font-bold p-3 rounded-xl border border-white/10 shadow-2xl flex items-center justify-between animate-bounce">
           <span>Routing to Dr. {doctor.name}'s details page... (Dynamic Route Linking Next)</span>
@@ -100,14 +101,15 @@ export default function DoctorCard({ doctor }) {
             <span className="text-lg font-black text-emerald-500 dark:text-emerald-400">৳{doctor.fee}</span>
           </div>
           
-          
-          <button 
+          {/* Linked Button with Toast and Dynamic Navigation */}
+          <Link 
+            href={`/doctors/${doctor.id}`}
             onClick={handleViewDetails}
             className="flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition-all duration-300 cursor-pointer shadow-md active:scale-95 hover:scale-105 hover:shadow-indigo-500/30"
           >
             <span>View Details</span>
             <ChevronRight size={14} className="transform group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
+          </Link>
         </div>
 
       </div>
