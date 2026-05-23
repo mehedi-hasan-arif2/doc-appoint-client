@@ -44,7 +44,7 @@ export default function HeroBanner() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className="relative w-full h-full flex items-center">
-            {/* Background Image with Dark Contrast Gradient */}
+            {/* Background Image Dark Contrast Gradient */}
             <div className="absolute inset-0 w-full h-full">
               <Image
                 src={slide.image}
@@ -53,7 +53,7 @@ export default function HeroBanner() {
                 priority={index === 0}
                 className="object-cover object-center"
               />
-              {/* Overlays to guarantee high text contrast */}
+              {/* Overlays high text contrast */}
               <div className="absolute inset-0 bg-slate-950/50" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/30" />
             </div>
@@ -62,7 +62,7 @@ export default function HeroBanner() {
             <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6">
               <div className="max-w-3xl w-full z-10 slide-in">
                 
-                {/* Master Premium Glassmorphism Container */}
+                {/* Glassmorphism Container */}
                 <div className="w-full p-6 sm:p-10 rounded-3xl bg-slate-900/60 dark:bg-black/40 backdrop-blur-md border border-white/10 shadow-2xl space-y-6 text-center">
                   
                   {/* 1. Verified Badge */}
@@ -83,7 +83,7 @@ export default function HeroBanner() {
                     </p>
                   </div>
 
-                  {/* 3. Pure Brand Theme Dual Buttons */}
+                  {/* 3. Dual Buttons */}
                   <div className="flex flex-wrap items-center justify-center gap-4 pt-1">
                     <Link href="/appointments">
                       <button className="flex items-center gap-2 bg-[var(--btn-primary)] hover:bg-[var(--btn-primary-hover)] text-white font-bold px-6 py-3 rounded-full text-xs sm:text-sm transition-all duration-300 shadow-lg shadow-indigo-600/20 transform hover:-translate-y-0.5 cursor-pointer">
