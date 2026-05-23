@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
+/* Light Theme */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-body: #ffffff;
+  --text-body: #0f172a;
+
+  --nav-bg: linear-gradient(
+    90deg,
+    rgba(240, 249, 255, 0.95),
+    rgba(224, 242, 254, 0.95),
+    rgba(238, 242, 255, 0.95)
+  );
+
+  --nav-text: #0f172a;
+
+  --btn-primary: #4f46e5;
+  --btn-primary-hover: #4338ca;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-body: #0b1120;
+  --text-body: #ffffff;
+
+  --nav-bg: linear-gradient(
+    90deg,
+    rgba(2, 6, 23, 0.95),
+    rgba(15, 23, 42, 0.95),
+    rgba(30, 41, 59, 0.95)
+  );
+
+  --nav-text: #e2e8f0;
+
+  --btn-primary: #4f46e5;
+  --btn-primary-hover: #4338ca;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Body */
+body {
+  background: var(--bg-body);
+  color: var(--text-body);
+  transition: all 0.3s ease;
+}
+
+/* Navbar */
+.nav-bg-gradient {
+  background: var(--nav-bg);
+  backdrop-filter: blur(18px);
+}
+
+.nav-border-gradient {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Slide animation */
+.slide-in {
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Footer */
+footer {
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: auto; 
 }
