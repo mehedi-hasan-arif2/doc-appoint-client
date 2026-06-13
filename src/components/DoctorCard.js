@@ -101,7 +101,7 @@ export default function DoctorCard({ doctor }) {
             <span className="text-lg font-black text-emerald-500 dark:text-emerald-400">৳{doctor.fee}</span>
           </div>
           
-          {/* Linked Button with Toast and Dynamic Navigation */}
+          {/* Linked Button */}
           <Link 
             href={`/doctors/${doctor.id}`}
             onClick={handleViewDetails}

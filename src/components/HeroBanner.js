@@ -44,7 +44,7 @@ export default function HeroBanner() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className="relative w-full h-full flex items-center">
-            {/* Background Image Dark Contrast Gradient */}
+              {/* Background Image with Overlays */}
             <div className="absolute inset-0 w-full h-full">
               <Image
                 src={slide.image}
@@ -53,7 +53,6 @@ export default function HeroBanner() {
                 priority={index === 0}
                 className="object-cover object-center"
               />
-              {/* Overlays high text contrast */}
               <div className="absolute inset-0 bg-slate-950/50" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/30" />
             </div>
@@ -65,7 +64,7 @@ export default function HeroBanner() {
                 {/* Glassmorphism Container */}
                 <div className="w-full p-6 sm:p-10 rounded-3xl bg-slate-900/60 dark:bg-black/40 backdrop-blur-md border border-white/10 shadow-2xl space-y-6 text-center">
                   
-                  {/* 1. Verified Badge */}
+                  {/* Verified Badge */}
                   <div className="inline-flex items-center gap-2 bg-indigo-500/15 border border-indigo-400/30 px-4 py-1.5 rounded-full mx-auto">
                     <ShieldCheck size={14} className="text-indigo-400" />
                     <span className="text-[10px] sm:text-[11px] font-bold text-indigo-300 uppercase tracking-widest">
@@ -73,7 +72,7 @@ export default function HeroBanner() {
                     </span>
                   </div>
 
-                  {/* 2. Title & Description Box */}
+                  {/* Title & Description Box */}
                   <div className="space-y-3">
                     <h1 className="text-2xl sm:text-5xl font-black text-white leading-tight tracking-tight drop-shadow-md">
                       {slide.title}
@@ -83,7 +82,7 @@ export default function HeroBanner() {
                     </p>
                   </div>
 
-                  {/* 3. Dual Buttons */}
+                  {/*  Dual Buttons */}
                   <div className="flex flex-wrap items-center justify-center gap-4 pt-1">
                     <Link href="/appointments">
                       <button className="flex items-center gap-2 bg-[var(--btn-primary)] hover:bg-[var(--btn-primary-hover)] text-white font-bold px-6 py-3 rounded-full text-xs sm:text-sm transition-all duration-300 shadow-lg shadow-indigo-600/20 transform hover:-translate-y-0.5 cursor-pointer">
@@ -92,7 +91,7 @@ export default function HeroBanner() {
                       </button>
                     </Link>
 
-                    <Link href="/dashboard">
+                    <Link href="/dashboard/my-bookings">
                       <button className="flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-full text-xs sm:text-sm border border-white/10 backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer">
                         <CalendarCheck size={15} className="text-slate-300" />
                         My Bookings
@@ -100,7 +99,7 @@ export default function HeroBanner() {
                     </Link>
                   </div>
 
-                  {/* 4. Minimalistic Stats Block */}
+                  {/*  Minimalistic Stats Block */}
                   <div className="border-t border-white/10 pt-5">
                     <div className="grid grid-cols-3 gap-2 sm:gap-4 text-white text-center">
                       

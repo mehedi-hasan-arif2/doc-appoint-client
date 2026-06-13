@@ -4,12 +4,11 @@ import { useState, useEffect } from "react";
 import HeroBanner from "@/components/HeroBanner";
 import DoctorCard from "@/components/DoctorCard";
 import { Loader2, ShieldCheck, Zap, Heart, Sparkles, Quote, Star } from "lucide-react";
-import localDoctors from "@/data/doctorsData.json";
 
 export default function Home() {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
-  const SERVER_URL = "https://doc-appoint-server-62ny.onrender.com";
+  const SERVER_URL = process.env.NEXT_PUBLIC_API_URL || "https://doc-appoint-server-62ny.onrender.com";
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -19,14 +18,12 @@ export default function Home() {
         if (res.ok) {
           const data = await res.json();
           if (data && data.length > 0) {
+            // Slice to get only the top 3 doctors for the home page showcase
             setDoctors(data.slice(0, 3));
-            return;
           }
         }
-        setDoctors(localDoctors.slice(0, 3));
       } catch (error) {
-        console.error("Error fetching doctors:", error);
-        setDoctors(localDoctors.slice(0, 3));
+        console.error("Error fetching doctors from database:", error);
       } finally {
         setLoading(false);
       }
@@ -36,12 +33,10 @@ export default function Home() {
   }, []);
 
   return (
-    
     <div className="w-full pb-28 space-y-28 overflow-hidden">
-      {/* 1. Hero Banner */}
       <HeroBanner />
 
-      {/* 2. Top Rated Doctors Section */}
+      {/* Top Rated Doctors Section */}
       <div className="max-w-7xl mx-auto px-6 space-y-12">
         <div className="text-center space-y-3">
           <h2 className="text-3xl font-black tracking-tight sm:text-5xl dynamic-heading">
@@ -65,7 +60,7 @@ export default function Home() {
         )}
       </div>
 
-      {/* 3. Additional Section 1: Bento Grid  */}
+      {/* Advantage Features Grid */}
       <div className="max-w-7xl mx-auto px-6 space-y-12">
         <div className="text-center space-y-3">
           <h2 className="text-3xl font-black tracking-tight sm:text-5xl dynamic-heading">
@@ -76,10 +71,8 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[220px]">
           
-          {/* Block 1 */}
           <div className="md:col-span-2 dynamic-card rounded-3xl p-8 flex flex-col justify-between group hover:border-indigo-500/30 transition-all duration-300 shadow-xl">
             <div className="flex items-center justify-between">
               <div className="p-4 bg-teal-500/10 rounded-2xl border border-teal-500/20 text-teal-500 group-hover:scale-105 transition-transform">
@@ -95,7 +88,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Block 2 */}
           <div className="dynamic-card rounded-3xl p-6 flex flex-col justify-between group hover:border-indigo-500/30 transition-all duration-300 shadow-xl">
             <div className="p-3.5 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-indigo-400 w-max group-hover:rotate-6 transition-transform">
               <Zap size={24} />
@@ -108,7 +100,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Block 3 */}
           <div className="dynamic-card rounded-3xl p-6 flex flex-col justify-between group hover:border-indigo-500/30 transition-all duration-300 shadow-xl">
             <div className="p-3.5 bg-rose-500/10 rounded-xl border border-rose-500/20 text-rose-400 w-max group-hover:scale-105 transition-transform">
               <Heart size={24} />
@@ -121,7 +112,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Block 4 */}
           <div className="md:col-span-2 dynamic-card rounded-3xl p-8 flex flex-col justify-between group hover:border-indigo-500/30 transition-all duration-300 shadow-xl">
             <div className="flex items-center justify-between">
               <div className="p-4 bg-amber-500/10 rounded-2xl border border-amber-500/20 text-amber-400 group-hover:translate-x-0.5 transition-transform">
@@ -144,7 +134,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 4. Additional Section 2 */}
+      {/* Testimonials Section */}
       <div className="max-w-7xl mx-auto px-6 space-y-12">
         <div className="text-center space-y-3">
           <h2 className="text-3xl font-black tracking-tight sm:text-5xl dynamic-heading">
@@ -155,9 +145,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* 6 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
           {[
             { quote: "The scheduling system is incredibly intuitive. I found an specialist and booked a preferred time slot in less than a minute.", author: "Tahmid Rahman", rating: 5 },
             { quote: "Absolute transparency with the medical fees. The dashboard updates live, preventing any administrative confusion.", author: "Farzana Yasmin", rating: 5 },
@@ -186,13 +174,12 @@ export default function Home() {
                 "{item.quote}"
               </p>
 
-              <div className="flex items-center gap-2.5 pt-3 border-t border-slate-200 dark:border-white/5 mt-2">
+              <div className="flex items-center gap-2.5 pt-3 border-t border-slate-700/50 mt-2">
                 <div className="w-2 h-2 rounded-full bg-teal-400 shadow-[0_0_10px_rgba(45,212,191,0.5)] group-hover:scale-125 transition-transform" />
                 <span className="text-xs font-black tracking-wide uppercase dynamic-heading">{item.author}</span>
               </div>
             </div>
           ))}
-
         </div>
       </div>
     </div>
