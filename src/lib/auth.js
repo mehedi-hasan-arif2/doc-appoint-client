@@ -1,9 +1,9 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
-import { db } from "./db";
+import clientPromise from "./db"; 
 
 export const auth = betterAuth({
-  database: mongodbAdapter(db),
+  database: mongodbAdapter(clientPromise), 
   emailAndPassword: {
     enabled: true,
     passwordValidation: {
