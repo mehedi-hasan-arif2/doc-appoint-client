@@ -3,7 +3,7 @@
 A full-stack doctor appointment booking system built with Next.js, Node.js, Express, and MongoDB.
 
 ## 🌐 Live Site
-https://doc-appoint-client-tawny.vercel.app/
+https://doc-appoint-client-inky.vercel.app/
 
 ## 🚀 Features
 - Browse doctors with ratings and details  
